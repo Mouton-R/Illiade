@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue !
+{% endblock %}
+
+{% block body %}
+
+	<section class="productions">
+
+		{% for production in productions %}
+			<production>
+				<h2>{{ production.title }}</h2>
+				<div class="content">
+					<img src="{{ production.poster }}" alt="">
+					<p>{{ production.year }}</p>
+					<a href="{{ path('blog_show', {'id': production.id}) }}" class="btn btn-primary">lire la suite</a>
+				</div>
+			</production>
+		{% endfor %}
+
+	</section>
+
+{% endblock %}

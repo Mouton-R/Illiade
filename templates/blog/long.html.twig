@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<h1>long-métrages</h1>
+
+	<section class="productions">
+
+		{% for production in productions %}
+			<production>
+
+
+				<a class="content" href="{{ path('blog_show', {'id': production.id}) }}"><img src="{{ production.poster }}" alt=""></a>
+
+			</production>
+		{% endfor %}
+
+	</section>
+
+{% endblock %}
