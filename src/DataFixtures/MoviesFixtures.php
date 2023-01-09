@@ -22,7 +22,7 @@ class MoviesFixtures extends Fixture
 
 
 
-        for ($i = 0; $i < 25; $i++) {
+        for ($mov = 0; $mov < 25; $mov++) {
             $movie = new Movies();
             $movie->setTitle($faker->word(3))
                 ->setYearOfProduction($faker->year())
@@ -35,7 +35,8 @@ class MoviesFixtures extends Fixture
 
 
             $category = $this->getReference('cat-' . rand(1, 3));
-            $movie->setCategorie($category);
+            $movie->setCategories($category);
+            $this->setReference('mov-' . $mov, $movie);
 
             $manager->persist($movie);
 

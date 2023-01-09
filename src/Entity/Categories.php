@@ -30,6 +30,9 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Movies::class)]
     private Collection $movies;
 
+    #[ORM\Column]
+    private ?int $categoryOrder = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
@@ -107,7 +110,7 @@ class Categories
     {
         if (!$this->movies->contains($movie)) {
             $this->movies->add($movie);
-            $movie->setCategorie($this);
+            $movie->setCategories($this);
         }
 
         return $this;
@@ -117,10 +120,22 @@ class Categories
     {
         if ($this->movies->removeElement($movie)) {
             // set the owning side to null (unless already changed)
-            if ($movie->getCategorie() === $this) {
-                $movie->setCategorie(null);
+            if ($movie->getCategories() === $this) {
+                $movie->setCategories(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCategoryOrder(): ?int
+    {
+        return $this->categoryOrder;
+    }
+
+    public function setCategoryOrder(int $categoryOrder): self
+    {
+        $this->categoryOrder = $categoryOrder;
 
         return $this;
     }

@@ -45,7 +45,7 @@ class Movies
 
     #[ORM\ManyToOne(inversedBy: 'movies')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Categories $categorie = null;
+    private ?Categories $categories = null;
 
     #[ORM\OneToMany(mappedBy: 'Movies', targetEntity: Images::class, orphanRemoval: true)]
     private Collection $images;
@@ -145,14 +145,14 @@ class Movies
         return $this;
     }
 
-    public function getCategorie(): ?Categories
+    public function getCategories(): ?Categories
     {
-        return $this->categorie;
+        return $this->categories;
     }
 
-    public function setCategorie(?Categories $categorie): self
+    public function setCategories(?Categories $categories): self
     {
-        $this->categorie = $categorie;
+        $this->categories = $categories;
 
         return $this;
     }

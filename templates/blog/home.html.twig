@@ -6,8 +6,24 @@
 			<h1 class="display-4">Bienvenue sur le site d'Illiade &amp; films</h1>
 			<p class="lead">Illiade &amp; films est une société de production audiovisuel indépendante, spécialisée dans l'animation.</p>
 			<hr class="my-4">
-			<p>Pour commencer, rendez-vous sur la page de connexion pour utiliser l'application.</p>
-			<a class="btn btn-primary btn-lgz" href="{{ path('app_login') }}" role="button">Connexion</a>
+			<section class="row">
+				{% for category in categories %}
+					<div class="col-4">
+						<div class="card mb-3">
+							<h3 class="card-header">{{ category.name }}</h3>
+							<svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+								<rect width="100%" height="100%" fill="#868e96"></rect>
+								<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+							</svg>
+
+							<div class="card-body">
+								<a href="{{path('categories_list', {slug :category.slug}) }}" class="card-link">Voir l'ensemble des productions</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+
+			</section>
 		</div>
 
 	</div>

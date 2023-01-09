@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Movies;
+use App\Entity\Categories;
 use App\Repository\MoviesRepository;
+use App\Repository\CategoriesRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,37 +13,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'home')]
-    public function home()
+    public function home(CategoriesRepository $categoriesRepository): Response
     {
-        return $this->render('blog/home.html.twig');
+        return $this->render('blog/home.html.twig', [
+            'categories' => $categoriesRepository->findBy(
+                [],
+                ['categoryOrder' => 'asc']
+            )
+        ]);
     }
-
-    #[Route("/blog/long", name: "blog_long")]
-
-    public function long(MoviesRepository $repo)
+    #[Route("/movies/long", name: "movies_long")]
+    public function long()
     {
-        return $this->render('blog/long.html.twig');
-
-        $productions = $repo->findAll();
-
-        return $this->render(
-            'blog/long.html.twig',
-            [
-                'controller_name' => 'BlogController',
-                'productions' => $productions
-            ]
-        );
+        return $this->render('movies/long.html.twig');
     }
-
-    #[Route("/blog/court", name: "blog_court")]
+    #[Route("/movies/court", name: "movies_court")]
     public function court()
     {
-        return $this->render('blog/court.html.twig');
+        return $this->render('movies/court.html.twig');
     }
-    #[Route("/blog/developpement", name: "blog_developpement")]
+    #[Route("/movies/developpement", name: "movies_developpement")]
     public function developpement()
     {
-        return $this->render('blog/developpement.html.twig');
+        return $this->render('movies/developpement.html.twig');
     }
     #[Route("/blog/info", name: "blog_info")]
     public function info()
