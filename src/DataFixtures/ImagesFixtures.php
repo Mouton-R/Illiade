@@ -16,11 +16,10 @@ class ImagesFixtures extends Fixture implements DependentFixtureInterface
 
         for ($img = 1; $img <= 60; $img++) {
             $image = new Images();
-            $image->setName("http://placeholder.pics/svg/300x300/888888/EEE/Poster_Production_$img");
+            $image->setName($faker->image(null, 640, 480));
             $movie = $this->getReference('mov-' . rand(1, 24));
             $image->setMovies($movie);
 
-            // $product = new Product();
             $manager->persist($image);
         }
         $manager->flush();

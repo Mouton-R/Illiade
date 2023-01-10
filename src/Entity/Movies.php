@@ -41,11 +41,11 @@ class Movies
     private ?string $directing = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $Description = null;
+    private ?string $description = null;
 
-    #[ORM\ManyToOne(inversedBy: 'movies')]
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'movies')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Categories $categories = null;
+    private $categories;
 
     #[ORM\OneToMany(mappedBy: 'Movies', targetEntity: Images::class, orphanRemoval: true)]
     private Collection $images;
@@ -135,12 +135,12 @@ class Movies
 
     public function getDescription(): ?string
     {
-        return $this->Description;
+        return $this->description;
     }
 
     public function setDescription(string $Description): self
     {
-        $this->Description = $Description;
+        $this->description = $Description;
 
         return $this;
     }

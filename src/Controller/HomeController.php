@@ -22,7 +22,7 @@ class HomeController extends AbstractController
             )
         ]);
     }
-    #[Route("/movies/long", name: "movies_long")]
+    /*     #[Route("/movies/long", name: "movies_long")]
     public function long()
     {
         return $this->render('movies/long.html.twig');
@@ -36,7 +36,7 @@ class HomeController extends AbstractController
     public function developpement()
     {
         return $this->render('movies/developpement.html.twig');
-    }
+    } */
     #[Route("/blog/info", name: "blog_info")]
     public function info()
     {
