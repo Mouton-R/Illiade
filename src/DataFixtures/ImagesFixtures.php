@@ -16,7 +16,7 @@ class ImagesFixtures extends Fixture implements DependentFixtureInterface
 
         for ($img = 1; $img <= 60; $img++) {
             $image = new Images();
-            $image->setName($faker->image(null, 640, 480));
+            $image->setName("/images/illiade.svg");
             $movie = $this->getReference('mov-' . rand(1, 24));
             $image->setMovies($movie);
 

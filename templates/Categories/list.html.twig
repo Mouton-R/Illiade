@@ -26,6 +26,12 @@
 					</div>
 				</div>
 			{% endfor %}
+			{% set path = 'categories_list' %}
+			{% set slug = category.slug %}
+			{% set pages = movies.pages %}
+			{% set currentPage = movies.page %}
+			{% include "partials/pagination.html.twig" %}
+
 		</section>
 	</main>
 

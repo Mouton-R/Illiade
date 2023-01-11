@@ -19,8 +19,26 @@ class CategoriesController extends AbstractController
         $page = $request->query->getInt('page', 1);
 
         // on va chercher la liste des films de la catégorie
-        $movies = $moviesRepository->findMoviesPaginated($page, $category->getSlug(), 9);
+        $movies = $moviesRepository->findMoviesPaginated($page, $category->getSlug(), 6);
 
         return $this->render('categories/list.html.twig', compact('category', 'movies'));
+    }
+
+    #[Route("/court-metrages", name: "court-metrages")]
+    public function court()
+    {
+        return $this->render('categories/court-metrages.html.twig');
+    }
+
+    #[Route("/long-metrages", name: "long-metrages")]
+    public function long()
+    {
+        return $this->render('categories/long-metrages.html.twig');
+    }
+
+    #[Route("/en-developpement", name: "en-developpement")]
+    public function developpement()
+    {
+        return $this->render('categories/en-developpement.html.twig');
     }
 }

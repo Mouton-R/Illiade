@@ -30,7 +30,7 @@ class Categories
     #[ORM\OneToMany(mappedBy: 'categories', targetEntity: Movies::class)]
     private Collection $movies;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $categoryOrder = null;
 
     public function __construct()
