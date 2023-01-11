@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block body %}
-	<h3>{{ movie.title }}</h3>
-	<div>Images</div>
+	<h2>{{ movie.title }}</h2>
+	<div text-center><img src="\images\image1-min.png" alt="..." width="60%" height="auto" class="d-block mx-auto"></div>
 
 	<p>{{ movie.description }}</p>
 	<hr>
 	<div class="col-3">
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">
-				<h2>Informations</h2>
+				<h3>Informations</h3>
 			</li>
 			<li class="list-group-item">{{ movie.yearofproduction }}</li>
 			<li class="list-group-item">{{ movie.directing }}</li>

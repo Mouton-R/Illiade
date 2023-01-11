@@ -19,21 +19,18 @@
 						<a href="{{ path('movies_details', {"slug": movie.slug}) }}" class="card-link">
 							<h3 class="card-header">{{ movie.title }}</h3>
 						</a>
-						<svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-							<rect width="100%" height="100%" fill="#868e96"></rect>
-							<text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+						<img src="\images\image1-min.png" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveaspectratio="xMidYMid slice" viewbox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
 
-						</svg>
-					</div>
+
+					</svg>
 				</div>
-			{% endfor %}
-			{% set path = 'categories_list' %}
-			{% set slug = category.slug %}
-			{% set pages = movies.pages %}
-			{% set currentPage = movies.page %}
-			{% include "partials/pagination.html.twig" %}
+			</div>
+		{% endfor %}
+		{% set path = 'categories_list' %}
+		{% set slug = category.slug %}
+		{% set pages = movies.pages %}
+		{% set currentPage = movies.page %}
+		{% include "partials/pagination.html.twig" %}
 
-		</section>
-	</main>
-
-{% endblock %}
+	</section>
+</main>{% endblock %}
