@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 
+use Faker;
 use App\Entity\Categories;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -29,8 +30,11 @@ class CategoriesFixtures extends Fixture
 
     public function createCategroy(string $name, ObjectManager $manager)
     {
+        $faker = Faker\Factory::create('fr_FR');
+
         $category = new Categories();
         $category->setName($name)
+            ->setCategoryOrder($faker->numberBetween(1, 3))
             ->setSlug($this->slugger->slug($category->getName()));
         $manager->persist($category);
 
