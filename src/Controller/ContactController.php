@@ -13,47 +13,44 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact.index')]
-    public function index(
-        Request $request,
-        EntityManagerInterface $manager,
-        MailService $mailService
-    ): Response {
+    #[Route('blog/contact', name: 'app_contact')]
+    public function index(): Response
+    {
         $contact = new Contact();
 
 
         $form = $this->createForm(ContactType::class, $contact);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $contact = $form->getData();
 
-            $manager->persist($contact);
-            $manager->flush();
-
-            //Email
-            $mailService->sendEmail(
-                $contact->getEmail(),
-                $contact->getSubject(),
-                'emails/contact.html.twig',
-                ['contact' => $contact]
-            );
-
-            $this->addFlash(
-                'success',
-                'Votre demande a été envoyé avec succès !'
-            );
-
-            return $this->redirectToRoute('contact.index');
-        } else {
-            $this->addFlash(
-                'danger',
-                $form->getErrors()
-            );
-        }
-
-        return $this->render('pages/contact/index.html.twig', [
+        return $this->render('blog/contact.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 }
+  // $form->handleRequest($request);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $contact = $form->getData();
+
+        //     $manager->persist($contact);
+        //     $manager->flush();
+
+        //     //Email
+        //     $mailService->sendEmail(
+        //         $contact->getEmail(),
+        //         $contact->getSubject(),
+        //         'emails/contact.html.twig',
+        //         ['contact' => $contact]
+        //     );
+
+        //     $this->addFlash(
+        //         'success',
+        //         'Votre demande a été envoyé avec succès !'
+        //     );
+
+        //     return $this->redirectToRoute('contact');
+        // } else {
+        //     $this->addFlash(
+        //         'danger',
+        //         $form->getErrors()
+        //     );
+        // }

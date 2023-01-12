@@ -2,37 +2,10 @@
 {% block title %}Contact
 {% endblock %}
 {% block body %}
-	<h1>Contact</h1>
+	{{ dump() }}
 
-	<form>
-		<fieldset>
-
-			<div class="form-group">
-				<label for="name" class="form-label mt-4">Nom</label>
-				<input type="text" class="form-control" id="name" placeholder="Nom">
-			</div>
-
-			<div class="form-group">
-				<label for="prenom" class="form-label mt-4">Prénom</label>
-				<input type="text" class="form-control" id="name" placeholder="Prénom">
-			</div>
-
-			<div class="form-group">
-				<label for="exampleInputEmail1" class="form-label mt-4">Addresse mail</label>
-				<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Adresse mail">
-				<small id="emailHelp" class="form-text text-muted">Nous ne partagerons votre adresse à quiconque</small>
-			</div>
-
-			<div class="form-group">
-				<label for="post" class="form-label mt-4">Votre message</label>
-				<textarea class="form-control" id="post" rows="3" placeholder="Votre message"></textarea>
-			</div>
-
-		</fieldset>
-		<div class="mt-4">
-			<button type="submit" class="btn btn-primary button">Envoyer</button>
+	<div class="container">
+		<h1>Formulaire de contact</h1>
+		{{ form(form) }}
 		</div>
-	</form>
-
-
-{% endblock %}
+	{% endblock %}

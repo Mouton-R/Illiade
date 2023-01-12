@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ImagesRepository;
+use App\Entity\Trait\SlugTrait;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ImagesRepository;
 
 #[ORM\Entity(repositoryClass: ImagesRepository::class)]
 class Images
 {
+    use SlugTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

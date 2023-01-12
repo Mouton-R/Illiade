@@ -13,13 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/movies', name: 'movies_')]
 class MoviesController extends AbstractController
 {
-    #[Route('/', name: 'index')]
-    public function index(): Response
-    {
-        return $this->render('movies/index.html.twig', [
-            'controller_name' => 'MoviesController',
-        ]);
-    }
+
 
     #[Route('/{slug}', name: 'details')]
     public function details(Movies $movie): Response
