@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
-use App\Service\MailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,12 +13,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     #[Route('blog/contact', name: 'app_contact')]
-    public function index(): Response
+    public function index(Request $request, EntityManagerInterface $manager): Response
     {
         $contact = new Contact();
-
-
         $form = $this->createForm(ContactType::class, $contact);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $contact = $form->getData();
+
+            $manager->persist($contact);
+            $manager->flush();
+
+            // erreur : Serialization of 'Closure' is not allowed
+            //     $this->addFlash(
+            //         'success',
+            //         'Votre message a bien été envoyé'
+            //     );
+
+            //     return $this->redirectToRoute('app_contact');
+            // } else {
+            //     $this->addFlash(
+            //         'danger',
+            //         $form->getErrors()
+            //     );
+        }
 
 
         return $this->render('blog/contact.html.twig', [
@@ -27,30 +46,3 @@ class ContactController extends AbstractController
         ]);
     }
 }
-  // $form->handleRequest($request);
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $contact = $form->getData();
-
-        //     $manager->persist($contact);
-        //     $manager->flush();
-
-        //     //Email
-        //     $mailService->sendEmail(
-        //         $contact->getEmail(),
-        //         $contact->getSubject(),
-        //         'emails/contact.html.twig',
-        //         ['contact' => $contact]
-        //     );
-
-        //     $this->addFlash(
-        //         'success',
-        //         'Votre demande a été envoyé avec succès !'
-        //     );
-
-        //     return $this->redirectToRoute('contact');
-        // } else {
-        //     $this->addFlash(
-        //         'danger',
-        //         $form->getErrors()
-        //     );
-        // }

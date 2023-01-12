@@ -32,8 +32,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            // tell Doctrine you want to (eventually) save the Product (no queries yet)
             $entityManager->persist($user);
+            // actually executes the queries (i.e. the INSERT query)
             $entityManager->flush();
             // do anything else you need here, like send an email
 

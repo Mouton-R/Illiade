@@ -58,7 +58,7 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'btn btn-primary'
                 ],
-                'label' => 'Soumettre ma demande'
+                'label' => 'Envoyer'
             ]);
     }
 

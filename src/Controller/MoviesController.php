@@ -2,9 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Categories;
-use App\Repository\MoviesRepository;
-use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Movies;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
