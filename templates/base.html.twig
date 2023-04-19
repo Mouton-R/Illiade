@@ -9,24 +9,24 @@
 		<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{% block stylesheets %}
-			{{ encore_entry_link_tags('app') }}
+			<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 		{% endblock %}
-		<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
+	<section>
+		<body>
+			<nav>
+				{% include "partials/nav.html.twig" %}
+			</nav>
 
-	<body>
-		<nav>
-			{% include "partials/nav.html.twig" %}
-		</nav>
-
-		<div class="container"> {% block body %}{% endblock %}
-			</div>
-
-			<footer>
-				{% include "partials/footer.html.twig" %}
-			</footer>
-		</body>
+			<div class="container"> {% block body %}{% endblock %}
+				</div>
+			</body>
+		</section>
+		<footer>
+			{% include "partials/footer.html.twig" %}</footer>
 	</html>
+</body></html>
