@@ -3,18 +3,16 @@
 {% block title %}
 	{{ category.name }}
 {% endblock %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/css/lists.css') }}">
-{% endblock %}
+
 
 {% block body %}
 
 	<main class="contrainer">
 		<section class="row">
-			<div>
+			<div class="justify-content-between mt-3 mb-3">
 				<h1>{{ category.name }}</h1>
 			</div>
-			<hr>
+			<hr class="border-0">
 			{% for movie in movies.data %}
 				<div class="col-4">
 					<div class="item">
@@ -36,6 +34,10 @@
 		{% set pages = movies.pages %}
 		{% set currentPage = movies.page %}
 		{% include "partials/pagination.html.twig" %}
-
+		<script>
+			$(document).ready(function () {
+console.log("Script working properly");
+});
+		</script>
 	</section>
 </main>{% endblock %}
